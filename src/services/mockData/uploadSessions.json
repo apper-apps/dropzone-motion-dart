@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "files": ["1", "2"],
+    "totalSize": 18574400,
+    "uploadedSize": 18574400,
+    "startTime": "2024-01-15T10:28:00Z",
+    "endTime": "2024-01-15T10:32:00Z",
+    "status": "completed"
+  },
+  {
+    "id": "2",
+    "files": ["3"],
+    "totalSize": 1048576,
+    "uploadedSize": 1048576,
+    "startTime": "2024-01-13T09:18:00Z",
+    "endTime": "2024-01-13T09:21:00Z",
+    "status": "completed"
+  },
+  {
+    "id": "3",
+    "files": ["4", "5"],
+    "totalSize": 25690112,
+    "uploadedSize": 25690112,
+    "startTime": "2024-01-12T14:10:00Z", 
+    "endTime": "2024-01-12T14:18:00Z",
+    "status": "completed"
+  }
+]
