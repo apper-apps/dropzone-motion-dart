@@ -57,12 +57,42 @@ const uploadService = {
     return { ...deletedSession };
   },
 
-  async completeSession(id) {
+async completeSession(id) {
     await delay(100);
     return this.update(id, {
       endTime: new Date().toISOString(),
       status: 'completed'
     });
+  },
+
+  async downloadMultipleFiles(files, onProgress) {
+    await delay(300);
+    
+    // Dynamic import of JSZip
+    const JSZip = (await import('jszip')).default;
+    const zip = new JSZip();
+    
+    // Simulate adding files to ZIP
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (onProgress) {
+        onProgress((i / files.length) * 100, file.name);
+      }
+      
+      // Simulate file content (in real app, this would fetch actual file data)
+      const mockContent = `Mock content for ${file.name} (${file.size} bytes)`;
+      zip.file(file.name, mockContent);
+      
+      await delay(200); // Simulate processing time
+    }
+    
+    if (onProgress) {
+      onProgress(100);
+    }
+    
+    // Generate ZIP blob
+    const zipBlob = await zip.generateAsync({ type: 'blob' });
+    return zipBlob;
   }
 };
 
