@@ -15,6 +15,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Inter', ui-sans-serif, system-ui;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Prevent horizontal overflow */
@@ -38,10 +39,15 @@ body {
     display: none;
   }
   
-  .gradient-border {
+.gradient-border {
     background: linear-gradient(white, white) padding-box, 
                 linear-gradient(135deg, #5B21B6, #8B5CF6) border-box;
     border: 2px solid transparent;
+  }
+  
+  .dark .gradient-border {
+    background: linear-gradient(rgb(17 24 39), rgb(17 24 39)) padding-box, 
+                linear-gradient(135deg, #5B21B6, #8B5CF6) border-box;
   }
   
   .gradient-bg {
@@ -53,5 +59,24 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  
+  /* Dark mode scrollbar styling */
+  .dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: rgb(31 41 55);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgb(75 85 99);
+    border-radius: 4px;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgb(107 114 128);
   }
 }
