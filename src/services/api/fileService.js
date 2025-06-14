@@ -140,6 +140,28 @@ const fileService = {
     if (!file) {
       throw new Error('File not found');
     }
+const shareId = Math.random().toString(36).substr(2, 8);
+    return `https://dropzone.app/share/${shareId}`;
+  },
+
+  async getHistory() {
+    await delay(250);
+    // Return completed files sorted by creation date (newest first)
+    const completedFiles = files.filter(f => f.status === 'completed');
+    return completedFiles
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .map(file => ({ ...file }));
+  },
+
+  async regenerateShareableLink(fileId) {
+    await delay(200);
+    const file = files.find(f => f.id === fileId);
+    if (!file) {
+      throw new Error('File not found');
+    }
+    if (file.status !== 'completed') {
+      throw new Error('Cannot share incomplete file');
+    }
     
     const shareId = Math.random().toString(36).substr(2, 8);
     return `https://dropzone.app/share/${shareId}`;
